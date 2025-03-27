@@ -15,7 +15,7 @@ export function recommended() {
   return {
     compact: process.env.NODE_ENV === 'production',
     minified: process.env.NODE_ENV === 'production',
-    comments: process.env.NODE_ENV !== 'production',
+    comments: true,
     presets: [
       [
         '@babel/preset-env',
