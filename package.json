@@ -31,9 +31,9 @@
   },
   "repository": "github:premierstacks/babel-stack",
   "dependencies": {
-    "@babel/preset-env": "^8.0.0-alpha",
-    "@babel/preset-react": "^8.0.0-alpha",
-    "@babel/preset-typescript": "^8.0.0-alpha"
+    "@babel/preset-env": "^7.26",
+    "@babel/preset-react": "^7.26",
+    "@babel/preset-typescript": "^7.27"
   },
   "devDependencies": {
     "@premierstacks/eslint-stack": "github:premierstacks/eslint-stack",

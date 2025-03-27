@@ -17,9 +17,21 @@ export function recommended() {
     minified: process.env.NODE_ENV === 'production',
     comments: process.env.NODE_ENV !== 'production',
     presets: [
-      ['@babel/preset-env', {}],
+      [
+        '@babel/preset-env',
+        {
+          bugfixes: true,
+          debug: process.env.NODE_ENV === 'development',
+        },
+      ],
       ['@babel/preset-typescript', {}],
-      ['@babel/preset-react', {}],
+      [
+        '@babel/preset-react',
+        {
+          runtime: 'automatic',
+          development: process.env.NODE_ENV === 'development',
+        },
+      ],
     ],
   };
 }
