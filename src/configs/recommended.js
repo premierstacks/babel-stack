@@ -13,14 +13,15 @@
 
 export function recommended() {
   return {
-    compact: process.env.NODE_ENV === 'production',
-    minified: process.env.NODE_ENV === 'production',
+    compact: false,
+    minified: false,
     comments: true,
     presets: [
       [
         '@babel/preset-env',
         {
           bugfixes: true,
+          modules: false,
           debug: process.env.NODE_ENV === 'development',
         },
       ],
@@ -30,6 +31,19 @@ export function recommended() {
         {
           runtime: 'automatic',
           development: process.env.NODE_ENV === 'development',
+        },
+      ],
+      [
+        '@stylexjs/babel-plugin',
+        {
+          dev: process.env.NODE_ENV === 'development',
+          test: process.env.NODE_ENV === 'test',
+          runtimeInjection: false,
+          genConditionalClasses: true,
+          treeshakeCompensation: true,
+          unstable_moduleResolution: {
+            type: 'commonJS',
+          },
         },
       ],
     ],
