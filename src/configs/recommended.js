@@ -44,6 +44,7 @@ export function recommended() {
           unstable_moduleResolution: {
             type: 'commonJS',
           },
+          useRemForFontSize: true,
         },
       ],
     ],
