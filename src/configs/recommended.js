@@ -13,8 +13,8 @@
 
 export function recommended() {
   return {
-    compact: false,
-    minified: false,
+    compact: process.env.NODE_ENV === 'production',
+    minified: process.env.NODE_ENV === 'production',
     comments: true,
     presets: [
       [
@@ -33,6 +33,8 @@ export function recommended() {
           development: process.env.NODE_ENV === 'development',
         },
       ],
+    ],
+    plugins: [
       [
         '@stylexjs/babel-plugin',
         {
