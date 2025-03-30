@@ -11,7 +11,7 @@
  * @see {@link https://github.com/sponsors/tomchochola} GitHub Sponsors
  */
 
-export function recommended() {
+export function createBabelConfigBase() {
   return {
     compact: process.env.NODE_ENV === 'production',
     minified: process.env.NODE_ENV === 'production',
@@ -22,29 +22,6 @@ export function recommended() {
         {
           bugfixes: true,
           modules: false,
-        },
-      ],
-      ['@babel/preset-typescript', {}],
-      [
-        '@babel/preset-react',
-        {
-          runtime: 'automatic',
-          development: process.env.NODE_ENV === 'development',
-        },
-      ],
-    ],
-    plugins: [
-      [
-        '@stylexjs/babel-plugin',
-        {
-          dev: process.env.NODE_ENV === 'development',
-          runtimeInjection: false,
-          genConditionalClasses: true,
-          treeshakeCompensation: true,
-          unstable_moduleResolution: {
-            type: 'commonJS',
-          },
-          useRemForFontSize: true,
         },
       ],
     ],

@@ -69,14 +69,22 @@ limitations under the License.
 Here are the available module exports:
 
 ```js
-import { recommended } from '@premierstacks/babel-stack';
+import {
+  createBabelConfigBase,
+  createBabelConfigTypescriptReact,
+  applyBabelPresetReact,
+  createBabelConfigTypescriptReactStylex,
+  applyBabelPluginStylex,
+  applyBabelPresetTypescript,
+  createBabelConfigTypescript,
+} from '@premierstacks/babel-stack';
 ```
 
 ## Templates
 
 Explore the predefined templates for various configurations in the [/templates](/templates) directory. These templates provide quick-start setups for different environments.
 
-**[/templates/recommended.template](/templates/recommended.template)**<br />
+**[/templates/typescript_react_stylex.template](/templates/typescript_react_stylex.template)**<br />
 
 ## Getting Started
 
@@ -89,7 +97,7 @@ Ensure this package fits your needs and that you agree with the terms.
 Install using npm:
 
 ```bash
-npm install --save-dev github:premierstacks/babel-stack
+npm install --save-dev github:premierstacks/babel-stack#semver:^2.0
 ```
 
 **3. Select a template**
@@ -99,7 +107,7 @@ Choose one of the predefined configuration templates from the [/templates](/temp
 Use the `cp` command to copy it into your project as `/babel.config.js`:
 
 ```bash
-cp ./node_modules/@premierstacks/babel-stack/templates/recommended.template ./babel.config.js
+cp ./node_modules/@premierstacks/babel-stack/templates/typescript_react_stylex.template ./babel.config.js
 ```
 
 **4. CLI**

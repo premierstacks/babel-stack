@@ -11,7 +11,16 @@
  * @see {@link https://github.com/sponsors/tomchochola} GitHub Sponsors
  */
 
-export * from './base.js';
-export * from './react.js';
-export * from './stylex.js';
-export * from './typescript.js';
+import { createBabelConfigBase } from './base.js';
+
+export function applyBabelPresetTypescript(config) {
+  config.presets = config.presets || [];
+
+  config.presets.push(['@babel/preset-typescript', {}]);
+
+  return config;
+}
+
+export function createBabelConfigTypescript() {
+  return applyBabelPresetTypescript(createBabelConfigBase());
+}

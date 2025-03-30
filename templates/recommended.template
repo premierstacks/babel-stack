@@ -1,3 +1,0 @@
-import { recommended } from '@premierstacks/babel-stack';
-
-export default recommended();
