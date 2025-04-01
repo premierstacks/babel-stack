@@ -20,9 +20,10 @@ export function createBabelConfigBase() {
       [
         '@babel/preset-env',
         {
+          debug: process.env.NODE_ENV === 'development',
           bugfixes: true,
           modules: false,
-          useBuiltIns: 'usage',
+          useBuiltIns: 'entry',
           corejs: {
             version: '3.41',
             proposals: false,
