@@ -36,7 +36,7 @@
     "@babel/preset-react": "^7.26",
     "@babel/preset-typescript": "^7.27",
     "@stylexjs/babel-plugin": "^0.11",
-    "@stylexjs/stylex": "^0.11"
+    "core-js": "^3.41"
   },
   "devDependencies": {
     "@premierstacks/eslint-stack": "github:premierstacks/eslint-stack#semver:^2.0",
