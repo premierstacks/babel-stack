@@ -1,0 +1,3 @@
+import { createBabelConfigTypescriptReact } from '@premierstacks/babel-stack';
+
+export default createBabelConfigTypescriptReact();

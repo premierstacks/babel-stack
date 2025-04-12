@@ -1,0 +1,3 @@
+import { createBabelConfigTypescript } from '@premierstacks/babel-stack';
+
+export default createBabelConfigTypescript();

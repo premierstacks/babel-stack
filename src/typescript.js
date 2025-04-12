@@ -14,7 +14,7 @@
 import { createBabelConfigBase } from './base.js';
 
 export function applyBabelPresetTypescript(config) {
-  config.presets = config.presets || [];
+  config.presets = config.presets ?? [];
 
   config.presets.push(['@babel/preset-typescript', {}]);
 

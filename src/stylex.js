@@ -18,7 +18,7 @@ export function createBabelConfigTypescriptReactStylex() {
 }
 
 export function applyBabelPluginStylex(config) {
-  config.plugins = config.plugins || [];
+  config.plugins = config.plugins ?? [];
 
   config.plugins.push([
     '@stylexjs/babel-plugin',
