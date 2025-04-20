@@ -36,6 +36,7 @@
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.27.0",
     "@stylexjs/babel-plugin": "^0.12.0",
+    "babel-plugin-react-compiler": "^19.0.0-beta-ebf51a3-20250411",
     "core-js": "^3.41.0"
   },
   "devDependencies": {

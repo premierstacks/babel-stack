@@ -30,7 +30,7 @@ export function applyBabelPluginStylex(config) {
       unstable_moduleResolution: {
         type: 'commonJS',
       },
-      useRemForFontSize: true,
+      styleResolution: 'property-specificity',
     },
   ]);
 

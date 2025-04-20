@@ -19,6 +19,9 @@ export function createBabelConfigTypescriptReact() {
 
 export function applyBabelPresetReact(config) {
   config.presets = config.presets ?? [];
+  config.plugins = config.plugins ?? [];
+
+  config.plugins.unshift(['babel-plugin-react-compiler', {}]);
 
   config.presets.push([
     '@babel/preset-react',
