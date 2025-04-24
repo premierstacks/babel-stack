@@ -13,10 +13,6 @@
 
 import { createBabelConfigTypescriptReact } from './react.js';
 
-export function createBabelConfigTypescriptReactStylex() {
-  return applyBabelPluginStylex(createBabelConfigTypescriptReact());
-}
-
 export function applyBabelPluginStylex(config) {
   config.plugins = config.plugins ?? [];
 
@@ -25,7 +21,6 @@ export function applyBabelPluginStylex(config) {
     {
       dev: process.env.NODE_ENV === 'development',
       runtimeInjection: false,
-      genConditionalClasses: true,
       treeshakeCompensation: true,
       unstable_moduleResolution: {
         type: 'commonJS',
@@ -35,4 +30,8 @@ export function applyBabelPluginStylex(config) {
   ]);
 
   return config;
+}
+
+export function createBabelConfigTypescriptReactStylex() {
+  return applyBabelPluginStylex(createBabelConfigTypescriptReact());
 }

@@ -13,10 +13,6 @@
 
 import { createBabelConfigTypescript } from './typescript.js';
 
-export function createBabelConfigTypescriptReact() {
-  return applyBabelPresetReact(createBabelConfigTypescript());
-}
-
 export function applyBabelPresetReact(config) {
   config.presets = config.presets ?? [];
   config.plugins = config.plugins ?? [];
@@ -32,4 +28,8 @@ export function applyBabelPresetReact(config) {
   ]);
 
   return config;
+}
+
+export function createBabelConfigTypescriptReact() {
+  return applyBabelPresetReact(createBabelConfigTypescript());
 }
