@@ -1,5 +1,7 @@
 # [Babel Stack](https://github.com/premierstacks/babel-stack) by [Tomáš Chochola](https://github.com/tomchochola)
 
+The Babel Stack offers a curated set of pre-configured Babel setups and utilities designed to streamline the integration of Babel into modern JavaScript projects. It provides ready-to-use configurations and helper functions for various environments, including TypeScript, React, and StyleX, ensuring consistent code transpilation and enabling developers to adopt best practices with minimal setup effort.
+
 ## What is Premierstacks
 
 [GitHub Organization → /premierstacks](https://github.com/premierstacks)
