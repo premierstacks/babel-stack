@@ -11,3 +11,13 @@
 # node
 /node_modules
 /package-lock.json
+
+# eslint
+*.tsx
+*.mts
+*.ts
+*.cts
+*.jsx
+*.mjs
+*.js
+*.cjs

@@ -31,17 +31,17 @@
   },
   "repository": "github:premierstacks/babel-stack",
   "dependencies": {
-    "@babel/core": "^7.26.10",
-    "@babel/preset-env": "^7.26.9",
-    "@babel/preset-react": "^7.26.3",
-    "@babel/preset-typescript": "^7.27.0",
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
     "@stylexjs/babel-plugin": "latest",
-    "babel-plugin-react-compiler": "^19.1.0-rc.1",
-    "core-js": "^3.41.0"
+    "babel-plugin-react-compiler": "^19.1.0-rc.2",
+    "core-js": "^3.42.0"
   },
   "devDependencies": {
-    "@premierstacks/eslint-stack": "github:premierstacks/eslint-stack#semver:^3.0",
-    "@premierstacks/prettier-stack": "github:premierstacks/prettier-stack#semver:^3.0"
+    "@premierstacks/eslint-stack": "github:premierstacks/eslint-stack#main",
+    "@premierstacks/prettier-stack": "github:premierstacks/prettier-stack#main"
   },
   "type": "module",
   "sideEffects": false,
