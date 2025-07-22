@@ -24,7 +24,7 @@ export function createBabelConfigBase() {
           modules: false,
           useBuiltIns: 'entry',
           corejs: {
-            version: '3.41.0',
+            version: '3.44.0',
             proposals: false,
           },
         },
