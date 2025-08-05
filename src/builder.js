@@ -1,6 +1,6 @@
-import { createBabelConfig, withPresetEnv } from './base';
-import { withPluginReactCompiler, withPluginStylex, withPresetReact } from './react';
-import { withPresetTypescript } from './typescript';
+import { createBabelConfig, withPresetEnv } from './base.js';
+import { withPluginReactCompiler, withPluginStylex, withPresetReact } from './react.js';
+import { withPresetTypescript } from './typescript.js';
 
 export class BabelStack {
   #config;

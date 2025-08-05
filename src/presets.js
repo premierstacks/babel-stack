@@ -1,4 +1,4 @@
-import { BabelStack } from "./builder";
+import { BabelStack } from "./builder.js";
 
 export function base({
   env = true,
