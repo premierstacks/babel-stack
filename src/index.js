@@ -17,7 +17,6 @@ import { applyBabelPresetTypescript } from './typescript.js';
 
 export * from './base.js';
 export * from './react.js';
-export * from './stylex.js';
 export * from './typescript.js';
 
 export function createBabelStack({
