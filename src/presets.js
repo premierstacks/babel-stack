@@ -1,9 +1,12 @@
-import { BabelStack } from "./builder.js";
+import { BabelStack } from './builder.js';
 
 export function base({
   env = true,
+  environment = process.env.NODE_ENV ?? 'production',
 }) {
-  let config = BabelStack.create();
+  let config = BabelStack.create({
+    environment,
+  });
 
   if (env) {
     config = config.env();
@@ -14,8 +17,11 @@ export function base({
 
 export function typescript({
   env = true,
+  environment = process.env.NODE_ENV ?? 'production',
 }) {
-  let config = BabelStack.create();
+  let config = BabelStack.create({
+    environment,
+  });
 
   if (env) {
     config = config.env();
@@ -29,12 +35,11 @@ export function react({
   env = true,
   stylex = false,
   typescript: t = true,
+  environment = process.env.NODE_ENV ?? 'production',
 }) {
-  let config = BabelStack.create();
-
-  if (compiler) {
-    config = config.reactCompiler();
-  }
+  let config = BabelStack.create({
+    environment,
+  });
 
   if (env) {
     config = config.env();
@@ -45,6 +50,10 @@ export function react({
   }
 
   config = config.react();
+
+  if (compiler) {
+    config = config.reactCompiler();
+  }
 
   if (stylex) {
     config = config.stylex();

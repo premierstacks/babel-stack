@@ -11,7 +11,7 @@
  * @see {@link https://github.com/sponsors/tomchochola} GitHub Sponsors
  */
 
-export function withPresetTypescript(config, _options = {}, override = {}) {
+export function withPresetTypescript(config, {}, override = {}) {
   const defaults = {};
 
   return {

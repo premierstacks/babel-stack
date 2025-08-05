@@ -11,10 +11,12 @@
  * @see {@link https://github.com/sponsors/tomchochola} GitHub Sponsors
  */
 
-export function withPresetReact(config, _options = {}, override = {}) {
+export function withPresetReact(config, {
+  environment = process.env.NODE_ENV ?? 'production',
+}, override = {}) {
   const defaults = {
     runtime: 'automatic',
-    development: process.env.NODE_ENV === 'development',
+    development: environment === 'development',
   };
 
   return {
@@ -32,7 +34,7 @@ export function withPresetReact(config, _options = {}, override = {}) {
   };
 }
 
-export function withPluginReactCompiler(config, _options = {}, override = {}) {
+export function withPluginReactCompiler(config, {}, override = {}) {
   const defaults = {};
 
   return {
@@ -50,9 +52,11 @@ export function withPluginReactCompiler(config, _options = {}, override = {}) {
   };
 }
 
-export function withPluginStylex(config, _options = {}, override = {}) {
+export function withPluginStylex(config, {
+  environment = process.env.NODE_ENV ?? 'production',
+}, override = {}) {
   const defaults = {
-    dev: process.env.NODE_ENV === 'development',
+    dev: environment === 'development',
     runtimeInjection: false,
     treeshakeCompensation: true,
     unstable_moduleResolution: {

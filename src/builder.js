@@ -4,36 +4,65 @@ import { withPresetTypescript } from './typescript.js';
 
 export class BabelStack {
   #config;
+  #options;
 
-  constructor(config) {
+  constructor(config, options = {}) {
     this.#config = config;
+    this.#options = options;
   }
 
-  static create() {
-    return new BabelStack(createBabelConfig());
+  static create(options = {}) {
+    const merged = {
+      ...options,
+      environment: options.environment ?? process.env.NODE_ENV ?? 'production',
+    };
+
+    return new BabelStack(createBabelConfig(merged), merged);
   }
 
-  env(options, override) {
-    return new BabelStack(withPresetEnv(this.#config, options, override));
+  env(options = {}, override = {}) {
+    return new BabelStack(withPresetEnv(this.#config, {
+      ...this.#options,
+      ...options,
+    }, override), this.#options);
   }
 
-  typescript(options, override) {
-    return new BabelStack(withPresetTypescript(this.#config, options, override));
+  typescript(options = {}, override = {}) {
+    return new BabelStack(withPresetTypescript(this.#config, {
+      ...this.#options,
+      ...options,
+    }, override), this.#options);
   }
 
-  react(options, override) {
-    return new BabelStack(withPresetReact(this.#config, options, override));
+  react(options = {}, override = {}) {
+    return new BabelStack(withPresetReact(this.#config, {
+      ...this.#options,
+      ...options,
+    }, override), this.#options);
   }
 
-  reactCompiler(options, override) {
-    return new BabelStack(withPluginReactCompiler(this.#config, options, override));
+  reactCompiler(options = {}, override = {}) {
+    return new BabelStack(withPluginReactCompiler(this.#config, {
+      ...this.#options,
+      ...options,
+    }, override), this.#options);
   }
 
-  stylex(options, override) {
-    return new BabelStack(withPluginStylex(this.#config, options, override));
+  stylex(options = {}, override = {}) {
+    return new BabelStack(withPluginStylex(this.#config, {
+      ...this.#options,
+      ...options,
+    }, override), this.#options);
   }
 
   build() {
     return { ...this.#config };
+  }
+
+  options(options) {
+    return new BabelStack(this.#config, {
+      ...this.#options,
+      ...options,
+    });
   }
 }

@@ -11,17 +11,19 @@
  * @see {@link https://github.com/sponsors/tomchochola} GitHub Sponsors
  */
 
-export function createBabelConfig() {
+export function createBabelConfig({
+  environment = process.env.NODE_ENV ?? 'production',
+}) {
   return {
-    compact: process.env.NODE_ENV === 'production',
-    minified: process.env.NODE_ENV === 'production',
+    compact: environment === 'production',
+    minified: environment === 'production',
     comments: true,
     presets: [],
     plugins: [],
   };
 }
 
-export function withPresetEnv(config, _options = {}, override = {}) {
+export function withPresetEnv(config, {}, override = {}) {
   const defaults = {
     bugfixes: true,
     modules: false,
