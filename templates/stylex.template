@@ -1,3 +1,3 @@
 import { BabelStackPresets } from '@premierstacks/babel-stack';
 
-export default BabelStackPresets.typescript();
+export default BabelStackPresets.react({ stylex: true });

@@ -11,10 +11,20 @@
  * @see {@link https://github.com/sponsors/tomchochola} GitHub Sponsors
  */
 
-export function applyBabelPresetTypescript(config) {
-  config.presets = config.presets ?? [];
+export function withPresetTypescript(config, _options = {}, override = {}) {
+  const defaults = {};
 
-  config.presets.push(['@babel/preset-typescript', {}]);
-
-  return config;
+  return {
+    ...config,
+    presets: [
+      ...config.presets,
+      [
+        '@babel/preset-typescript',
+        {
+          ...defaults,
+          ...override,
+        },
+      ],
+    ],
+  };
 }

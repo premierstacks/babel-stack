@@ -11,7 +11,7 @@
  * @see {@link https://github.com/sponsors/tomchochola} GitHub Sponsors
  */
 
-export function createBabelConfigBase() {
+export function createBabelConfig() {
   return {
     compact: process.env.NODE_ENV === 'production',
     minified: process.env.NODE_ENV === 'production',
@@ -21,21 +21,28 @@ export function createBabelConfigBase() {
   };
 }
 
-export function applyBabelPresetEnv(config) {
-  config.presets = config.presets ?? [];
-
-  config.presets.push([
-    '@babel/preset-env',
-    {
-      bugfixes: true,
-      modules: false,
-      useBuiltIns: 'entry',
-      corejs: {
-        version: '3.45.0',
-        proposals: false,
-      },
+export function withPresetEnv(config, _options = {}, override = {}) {
+  const defaults = {
+    bugfixes: true,
+    modules: false,
+    useBuiltIns: 'entry',
+    corejs: {
+      version: '3.45.0',
+      proposals: false,
     },
-  ]);
+  };
 
-  return config;
+  return {
+    ...config,
+    presets: [
+      ...config.presets,
+      [
+        '@babel/preset-env',
+        {
+          ...defaults,
+          ...override,
+        },
+      ],
+    ],
+  };
 }

@@ -70,13 +70,13 @@ Here are the available module exports:
 
 ```js
 import {
-  applyBabelPluginReactCompiler,
-  applyBabelPluginStylex,
-  applyBabelPresetEnv,
-  applyBabelPresetReact,
-  applyBabelPresetTypescript,
-  createBabelConfigBase,
-  createBabelStack,
+  BabelStackPresets,
+  createBabelConfig,
+  withPluginReactCompiler,
+  withPluginStylex,
+  withPresetEnv,
+  withPresetReact,
+  withPresetTypescript,
 } from '@premierstacks/babel-stack';
 ```
 
@@ -84,10 +84,10 @@ import {
 
 Explore the predefined templates for various configurations in the [/templates](/templates) directory. These templates provide quick-start setups for different environments.
 
-**[/templates/typescript_react_stylex.template](/templates/typescript_react_stylex.template)**<br />
-**[/templates/typescript_react.template](/templates/typescript_react.template)**<br />
-**[/templates/typescript.template](/templates/typescript.template)**<br />
 **[/templates/base.template](/templates/base.template)**<br />
+**[/templates/react.template](/templates/react.template)**<br />
+**[/templates/stylex.template](/templates/stylex.template)**<br />
+**[/templates/typescript.template](/templates/typescript.template)**<br />
 
 ## Getting Started
 
@@ -110,13 +110,13 @@ Choose one of the predefined configuration templates from the [/templates](/temp
 Use the `cp` command to copy it into your project as `/babel.config.js`:
 
 ```bash
-cp ./node_modules/@premierstacks/babel-stack/templates/typescript_react_stylex.template ./babel.config.js
+cp ./node_modules/@premierstacks/babel-stack/templates/base.template ./babel.config.js
 # or
-cp ./node_modules/@premierstacks/babel-stack/templates/typescript_react.template ./babel.config.js
+cp ./node_modules/@premierstacks/babel-stack/templates/react.template ./babel.config.js
+# or
+cp ./node_modules/@premierstacks/babel-stack/templates/stylex.template ./babel.config.js
 # or
 cp ./node_modules/@premierstacks/babel-stack/templates/typescript.template ./babel.config.js
-# or
-cp ./node_modules/@premierstacks/babel-stack/templates/base.template ./babel.config.js
 ```
 
 **4. CLI**

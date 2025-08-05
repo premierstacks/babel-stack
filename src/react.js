@@ -11,43 +11,67 @@
  * @see {@link https://github.com/sponsors/tomchochola} GitHub Sponsors
  */
 
-export function applyBabelPresetReact(config) {
-  config.presets = config.presets ?? [];
+export function withPresetReact(config, _options = {}, override = {}) {
+  const defaults = {
+    runtime: 'automatic',
+    development: process.env.NODE_ENV === 'development',
+  };
 
-  config.presets.push([
-    '@babel/preset-react',
-    {
-      runtime: 'automatic',
-      development: process.env.NODE_ENV === 'development',
-    },
-  ]);
-
-  return config;
+  return {
+    ...config,
+    presets: [
+      ...config.presets,
+      [
+        '@babel/preset-react',
+        {
+          ...defaults,
+          ...override,
+        },
+      ],
+    ],
+  };
 }
 
-export function applyBabelPluginReactCompiler(config) {
-  config.plugins = config.plugins ?? [];
+export function withPluginReactCompiler(config, _options = {}, override = {}) {
+  const defaults = {};
 
-  config.plugins.unshift(['babel-plugin-react-compiler', {}]);
-
-  return config;
+  return {
+    ...config,
+    plugins: [
+      [
+        'babel-plugin-react-compiler',
+        {
+          ...defaults,
+          ...override,
+        },
+      ],
+      ...config.plugins,
+    ],
+  };
 }
 
-export function applyBabelPluginStylex(config) {
-  config.plugins = config.plugins ?? [];
-
-  config.plugins.push([
-    '@stylexjs/babel-plugin',
-    {
-      dev: process.env.NODE_ENV === 'development',
-      runtimeInjection: false,
-      treeshakeCompensation: true,
-      unstable_moduleResolution: {
-        type: 'commonJS',
-      },
-      styleResolution: 'property-specificity',
+export function withPluginStylex(config, _options = {}, override = {}) {
+  const defaults = {
+    dev: process.env.NODE_ENV === 'development',
+    runtimeInjection: false,
+    treeshakeCompensation: true,
+    unstable_moduleResolution: {
+      type: 'commonJS',
     },
-  ]);
+    styleResolution: 'property-specificity',
+  };
 
-  return config;
+  return {
+    ...config,
+    plugins: [
+      ...config.plugins,
+      [
+        '@stylexjs/babel-plugin',
+        {
+          ...defaults,
+          ...override,
+        },
+      ],
+    ],
+  };
 }

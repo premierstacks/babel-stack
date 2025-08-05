@@ -1,3 +1,0 @@
-import { createBabelStack } from '@premierstacks/babel-stack';
-
-export default createBabelStack({ env: true, typescript: true, react: true, reactCompiler: true, stylex: true });
