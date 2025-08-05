@@ -70,13 +70,13 @@ Here are the available module exports:
 
 ```js
 import {
-  createBabelConfigBase,
-  createBabelConfigTypescriptReact,
-  applyBabelPresetReact,
-  createBabelConfigTypescriptReactStylex,
+  applyBabelPluginReactCompiler,
   applyBabelPluginStylex,
+  applyBabelPresetEnv,
+  applyBabelPresetReact,
   applyBabelPresetTypescript,
-  createBabelConfigTypescript,
+  createBabelConfigBase,
+  createBabelStack,
 } from '@premierstacks/babel-stack';
 ```
 

@@ -16,19 +16,26 @@ export function createBabelConfigBase() {
     compact: process.env.NODE_ENV === 'production',
     minified: process.env.NODE_ENV === 'production',
     comments: true,
-    presets: [
-      [
-        '@babel/preset-env',
-        {
-          bugfixes: true,
-          modules: false,
-          useBuiltIns: 'entry',
-          corejs: {
-            version: '3.44.0',
-            proposals: false,
-          },
-        },
-      ],
-    ],
+    presets: [],
+    plugins: [],
   };
+}
+
+export function applyBabelPresetEnv(config) {
+  config.presets = config.presets ?? [];
+
+  config.presets.push([
+    '@babel/preset-env',
+    {
+      bugfixes: true,
+      modules: false,
+      useBuiltIns: 'entry',
+      corejs: {
+        version: '3.45.0',
+        proposals: false,
+      },
+    },
+  ]);
+
+  return config;
 }

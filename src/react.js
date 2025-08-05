@@ -11,13 +11,8 @@
  * @see {@link https://github.com/sponsors/tomchochola} GitHub Sponsors
  */
 
-import { createBabelConfigTypescript } from './typescript.js';
-
 export function applyBabelPresetReact(config) {
   config.presets = config.presets ?? [];
-  config.plugins = config.plugins ?? [];
-
-  config.plugins.unshift(['babel-plugin-react-compiler', {}]);
 
   config.presets.push([
     '@babel/preset-react',
@@ -30,6 +25,29 @@ export function applyBabelPresetReact(config) {
   return config;
 }
 
-export function createBabelConfigTypescriptReact() {
-  return applyBabelPresetReact(createBabelConfigTypescript());
+export function applyBabelPluginReactCompiler(config) {
+  config.plugins = config.plugins ?? [];
+
+  config.plugins.unshift(['babel-plugin-react-compiler', {}]);
+
+  return config;
+}
+
+export function applyBabelPluginStylex(config) {
+  config.plugins = config.plugins ?? [];
+
+  config.plugins.push([
+    '@stylexjs/babel-plugin',
+    {
+      dev: process.env.NODE_ENV === 'development',
+      runtimeInjection: false,
+      treeshakeCompensation: true,
+      unstable_moduleResolution: {
+        type: 'commonJS',
+      },
+      styleResolution: 'property-specificity',
+    },
+  ]);
+
+  return config;
 }
