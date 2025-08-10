@@ -13,4 +13,5 @@
 
 import { createPrettierConfigBase } from '@premierstacks/prettier-stack';
 
+// eslint-disable-next-line no-restricted-exports
 export default createPrettierConfigBase();

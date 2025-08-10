@@ -11,9 +11,11 @@
  * @see {@link https://github.com/sponsors/tomchochola} GitHub Sponsors
  */
 
-export function withPresetReact(config, {
-  environment = process.env.NODE_ENV ?? 'production',
-}, override = {}) {
+export function withPresetReact(config, options = {}, override = {}) {
+  const {
+    environment = process.env.NODE_ENV ?? 'production',
+  } = options;
+
   const defaults = {
     runtime: 'automatic',
     development: environment === 'development',
@@ -34,8 +36,9 @@ export function withPresetReact(config, {
   };
 }
 
-export function withPluginReactCompiler(config, {}, override = {}) {
-  const defaults = {};
+export function withPluginReactCompiler(config, options = {}, override = {}) {
+  // eslint-disable-next-line no-empty-pattern
+  const {} = options;
 
   return {
     ...config,
@@ -43,7 +46,6 @@ export function withPluginReactCompiler(config, {}, override = {}) {
       [
         'babel-plugin-react-compiler',
         {
-          ...defaults,
           ...override,
         },
       ],
@@ -52,9 +54,11 @@ export function withPluginReactCompiler(config, {}, override = {}) {
   };
 }
 
-export function withPluginStylex(config, {
-  environment = process.env.NODE_ENV ?? 'production',
-}, override = {}) {
+export function withPluginStylex(config, options = {}, override = {}) {
+  const {
+    environment = process.env.NODE_ENV ?? 'production',
+  } = options;
+
   const defaults = {
     dev: environment === 'development',
     runtimeInjection: false,

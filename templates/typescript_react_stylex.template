@@ -1,4 +1,4 @@
 import { BabelStack } from '@premierstacks/babel-stack';
 
 // eslint-disable-next-line no-restricted-exports
-export default BabelStack.Presets.typescript();
+export default BabelStack.Presets.typescriptReactStylex();

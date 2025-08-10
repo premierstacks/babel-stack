@@ -1,6 +1,7 @@
 import { createBabelConfig, withPresetEnv } from './base.js';
 import { withPluginReactCompiler, withPluginStylex, withPresetReact } from './react.js';
 import { withPresetTypescript } from './typescript.js';
+import * as presets from './presets.js';
 
 export class BabelStack {
   #config;
@@ -64,5 +65,9 @@ export class BabelStack {
       ...this.#options,
       ...options,
     });
+  }
+
+  static get presets() {
+    return presets;
   }
 }

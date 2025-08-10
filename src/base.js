@@ -11,9 +11,11 @@
  * @see {@link https://github.com/sponsors/tomchochola} GitHub Sponsors
  */
 
-export function createBabelConfig({
-  environment = process.env.NODE_ENV ?? 'production',
-}) {
+export function createBabelConfig(options = {}) {
+  const {
+    environment = process.env.NODE_ENV ?? 'production',
+  } = options;
+
   return {
     compact: environment === 'production',
     minified: environment === 'production',
@@ -23,7 +25,10 @@ export function createBabelConfig({
   };
 }
 
-export function withPresetEnv(config, {}, override = {}) {
+export function withPresetEnv(config, options = {}, override = {}) {
+  // eslint-disable-next-line no-empty-pattern
+  const {} = options;
+
   const defaults = {
     bugfixes: true,
     modules: false,

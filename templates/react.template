@@ -1,3 +1,0 @@
-import { BabelStackPresets } from '@premierstacks/babel-stack';
-
-export default BabelStackPresets.react();

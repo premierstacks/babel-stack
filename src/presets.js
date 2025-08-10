@@ -1,42 +1,15 @@
 import { BabelStack } from './builder.js';
 
-export function base({
-  env = true,
-  environment = process.env.NODE_ENV ?? 'production',
-}) {
-  let config = BabelStack.create({
-    environment,
-  });
+export function base(options = {}) {
+  const {
+    environment = process.env.NODE_ENV ?? 'production',
+    env = true,
+    typescript: t = false,
+    react = false,
+    reactCompiler = false,
+    stylex = false,
+  } = options;
 
-  if (env) {
-    config = config.env();
-  }
-
-  return config.build();
-}
-
-export function typescript({
-  env = true,
-  environment = process.env.NODE_ENV ?? 'production',
-}) {
-  let config = BabelStack.create({
-    environment,
-  });
-
-  if (env) {
-    config = config.env();
-  }
-
-  return config.typescript().build();
-}
-
-export function react({
-  compiler = true,
-  env = true,
-  stylex = false,
-  typescript: t = true,
-  environment = process.env.NODE_ENV ?? 'production',
-}) {
   let config = BabelStack.create({
     environment,
   });
@@ -49,9 +22,11 @@ export function react({
     config = config.typescript();
   }
 
-  config = config.react();
+  if (react) {
+    config = config.react();
+  }
 
-  if (compiler) {
+  if (reactCompiler) {
     config = config.reactCompiler();
   }
 
@@ -59,5 +34,31 @@ export function react({
     config = config.stylex();
   }
 
-  return config.build();
+  return config;
+}
+
+export function typescript(options = {}) {
+  return base({
+    typescript: true,
+    ...options,
+  });
+}
+
+export function typescriptReact(options = {}) {
+  return base({
+    typescript: true,
+    react: true,
+    reactCompiler: true,
+    ...options,
+  });
+}
+
+export function typescriptReactStylex(options = {}) {
+  return base({
+    typescript: true,
+    react: true,
+    reactCompiler: true,
+    stylex: true,
+    ...options,
+  });
 }

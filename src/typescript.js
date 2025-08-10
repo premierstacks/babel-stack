@@ -11,8 +11,9 @@
  * @see {@link https://github.com/sponsors/tomchochola} GitHub Sponsors
  */
 
-export function withPresetTypescript(config, {}, override = {}) {
-  const defaults = {};
+export function withPresetTypescript(config, options = {}, override = {}) {
+  // eslint-disable-next-line no-empty-pattern
+  const {} = options;
 
   return {
     ...config,
@@ -21,7 +22,6 @@ export function withPresetTypescript(config, {}, override = {}) {
       [
         '@babel/preset-typescript',
         {
-          ...defaults,
           ...override,
         },
       ],
