@@ -76,10 +76,10 @@ import { BabelStack } from '@premierstacks/babel-stack';
 
 Explore the predefined templates for various configurations in the [/templates](/templates) directory. These templates provide quick-start setups for different environments.
 
-**[/templates/base.template](/templates/base.template)**<br />
-**[/templates/typescript.template](/templates/typescript.template)**<br />
-**[/templates/typescript_react.template](/templates/typescript_react.template)**<br />
-**[/templates/typescript_react_stylex.template](/templates/typescript_react_stylex.template)**<br />
+**[/templates/base.js](/templates/base.js)**<br />
+**[/templates/typescript.js](/templates/typescript.js)**<br />
+**[/templates/typescript_react.js](/templates/typescript_react.js)**<br />
+**[/templates/typescript_react_stylex.js](/templates/typescript_react_stylex.js)**<br />
 
 ## Getting Started
 
@@ -102,13 +102,13 @@ Choose one of the predefined configuration templates from the [/templates](/temp
 Use the `cp` command to copy it into your project as `/babel.config.js`:
 
 ```bash
-cp ./node_modules/@premierstacks/babel-stack/templates/base.template ./babel.config.js
+cp ./node_modules/@premierstacks/babel-stack/templates/base.js ./babel.config.js
 # or
-cp ./node_modules/@premierstacks/babel-stack/templates/typescript.template ./babel.config.js
+cp ./node_modules/@premierstacks/babel-stack/templates/typescript.js ./babel.config.js
 # or
-cp ./node_modules/@premierstacks/babel-stack/templates/typescript_react.template ./babel.config.js
+cp ./node_modules/@premierstacks/babel-stack/templates/typescript_react.js ./babel.config.js
 # or
-cp ./node_modules/@premierstacks/babel-stack/templates/typescript_react_stylex.template ./babel.config.js
+cp ./node_modules/@premierstacks/babel-stack/templates/typescript_react_stylex.js ./babel.config.js
 ```
 
 **4. CLI**
