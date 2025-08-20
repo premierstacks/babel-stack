@@ -51,12 +51,12 @@ export class BabelStack {
   env(options = {}) {
     const defaults = {
       bugfixes: true,
+      corejs: {
+        proposals: false,
+        version: '3.45.0',
+      },
       modules: false,
       useBuiltIns: 'entry',
-      corejs: {
-        version: '3.45.0',
-        proposals: false,
-      },
     };
 
     return new this.constructor({
@@ -91,8 +91,8 @@ export class BabelStack {
 
   react(options = {}) {
     const defaults = {
-      runtime: 'automatic',
       development: this.babelEnvNodeEnv === 'development',
+      runtime: 'automatic',
     };
 
     return new this.constructor({
@@ -129,11 +129,11 @@ export class BabelStack {
     const defaults = {
       dev: this.babelEnvNodeEnv === 'development',
       runtimeInjection: false,
+      styleResolution: 'property-specificity',
       treeshakeCompensation: true,
       unstable_moduleResolution: {
         type: 'commonJS',
       },
-      styleResolution: 'property-specificity',
     };
 
     return new this.constructor({
