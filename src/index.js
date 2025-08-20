@@ -11,8 +11,4 @@
  * @see {@link https://github.com/sponsors/tomchochola} GitHub Sponsors
  */
 
-export * from './base.js';
-export * from './react.js';
-export * from './typescript.js';
-export * from './builder.js';
-export * as BabelStackPresets from './presets.js';
+export * from './BabelStack.js';
