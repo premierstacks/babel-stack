@@ -18,11 +18,16 @@ export class BabelStack {
     this.config = config;
   }
 
-  static create() {
+  static create(options = {}) {
     return new this({
       plugins: [],
       presets: [],
+      ...options,
     });
+  }
+
+  clone(config) {
+    return new this.constructor(config);
   }
 
   get babelEnv() {
@@ -37,36 +42,33 @@ export class BabelStack {
     return this.babelEnv ?? this.nodeEnv ?? 'production';
   }
 
-  base() {
-    return new this.constructor({
+  base(options = {}) {
+    return this.clone({
+      ...this.config,
       comments: true,
       compact: this.babelEnvNodeEnv === 'production',
       minified: this.babelEnvNodeEnv === 'production',
       plugins: [],
       presets: [],
-      ...this.config,
+      ...options,
     });
   }
 
   env(options = {}) {
-    const defaults = {
-      bugfixes: true,
-      corejs: {
-        proposals: false,
-        version: '3.45.0',
-      },
-      modules: false,
-      useBuiltIns: 'entry',
-    };
-
-    return new this.constructor({
+    return this.clone({
       ...this.config,
       presets: [
         ...this.config.presets,
         [
           '@babel/preset-env',
           {
-            ...defaults,
+            bugfixes: true,
+            corejs: {
+              proposals: false,
+              version: '3.45.0',
+            },
+            modules: false,
+            useBuiltIns: 'entry',
             ...options,
           },
         ],
@@ -75,7 +77,7 @@ export class BabelStack {
   }
 
   typescript(options = {}) {
-    return new this.constructor({
+    return this.clone({
       ...this.config,
       presets: [
         ...this.config.presets,
@@ -90,19 +92,15 @@ export class BabelStack {
   }
 
   react(options = {}) {
-    const defaults = {
-      development: this.babelEnvNodeEnv === 'development',
-      runtime: 'automatic',
-    };
-
-    return new this.constructor({
+    return this.clone({
       ...this.config,
       presets: [
         ...this.config.presets,
         [
           '@babel/preset-react',
           {
-            ...defaults,
+            development: this.babelEnvNodeEnv === 'development',
+            runtime: 'automatic',
             ...options,
           },
         ],
@@ -111,7 +109,7 @@ export class BabelStack {
   }
 
   reactCompiler(options = {}) {
-    return new this.constructor({
+    return this.clone({
       ...this.config,
       plugins: [
         [
@@ -126,24 +124,20 @@ export class BabelStack {
   }
 
   stylex(options = {}) {
-    const defaults = {
-      dev: this.babelEnvNodeEnv === 'development',
-      runtimeInjection: false,
-      styleResolution: 'property-specificity',
-      treeshakeCompensation: true,
-      unstable_moduleResolution: {
-        type: 'commonJS',
-      },
-    };
-
-    return new this.constructor({
+    return this.clone({
       ...this.config,
       plugins: [
         ...this.config.plugins,
         [
           '@stylexjs/babel-plugin',
           {
-            ...defaults,
+            dev: this.babelEnvNodeEnv === 'development',
+            runtimeInjection: false,
+            styleResolution: 'property-specificity',
+            treeshakeCompensation: true,
+            unstable_moduleResolution: {
+              type: 'commonJS',
+            },
             ...options,
           },
         ],
@@ -152,6 +146,6 @@ export class BabelStack {
   }
 
   build() {
-    return this.config;
+    return { ...this.config };
   }
 }
